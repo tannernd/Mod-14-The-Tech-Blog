@@ -61,8 +61,20 @@ router.get('/post/:id', withAuth, async (req, res, next) => {
     res.render('post', {postsData, loggedIn: req.session.logged_in});
 });
 
+// Post Route
+router.get('/post-update/:id', withAuth, async (req, res, next) => {
+  const posts = await Posts.findByPk(req.params.id, {include: [{ model: Comments }, { model: User }]});
+    let postsData = [];
+    if (posts === undefined || posts === null || posts.length === 0 ) {
+      postsData = [];
+    } else {
+      postsData = posts.get({ plain: true });;
+    } 
+  res.render('updatePost', {postsData, loggedIn: req.session.logged_in});
+});
+
 // New Post Route
-router.get('/post/new', withAuth, async (req, res, next) => {
+router.get('/post-new', withAuth, async (req, res, next) => {
     res.render('newPost', {loggedIn: req.session.logged_in});
 });
 

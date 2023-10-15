@@ -48,6 +48,14 @@ button, .btn, button:hover, .btn:hover, button:focus, .btn:focus, button:active,
   border:none !important;
 }
 
+.create-post {
+  background-color: black;
+  color:white;
+  border:black 1px solid;
+  border-radius: 10px;
+  padding:1rem;
+}
+
 /* Nav */
 header, .header {
   background-color:var(--dark-background) ;  

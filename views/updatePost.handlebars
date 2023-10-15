@@ -1,0 +1,18 @@
+<div class="card ms-3 me-3">
+    <div class="card-header d-flex">
+    <h4>Update Post</h4>
+  </div>
+    <div class="card-body">
+    <form id="update-post">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Enter Title" value="{{postsData.title}}">
+        </div>
+        <div class="form-group">
+            <label for="post">Content</label>
+            <textarea class="form-control" id="post" rows="5">{{postsData.post}}</textarea>
+        </div>        
+        <button type="submit" class="btn mt-2">Update</button>
+    </form>
+    </div>
+</div>

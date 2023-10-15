@@ -32,7 +32,7 @@ router.put('/:id', async (req, res) => {
                 id: req.params.id,
             }
         });
-        (post[0]) ? res.status(200).json({msg: 'Post successfully updated.'}) : res.status(400).json({msg: 'Post failed to update, check request.'});
+        (post[0]) ? res.status(200).json({id:req.params.id, msg: 'Post successfully updated.'}) : res.status(400).json({msg: 'Post failed to update, check request.'});
     } catch (err) {
         res.status(500).json(err);
     }

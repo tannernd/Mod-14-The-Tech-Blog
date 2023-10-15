@@ -7,7 +7,7 @@
 {{#each postData as |post|}}
 <div class="card ms-3 me-3">
     <div class="card-header">
-    <a href="/post/{{post.id}}">{{post.title}}</a>
+    <a href="/post-update/{{post.id}}">{{post.title}}</a>
   </div>
     <div class="card-body">
         {{post.post}}
@@ -15,5 +15,14 @@
 </div>
 {{/each}}
 {{else}}
-<p>Please create a blog post</p>
+<div class="row">
+    <div class="col-12">
+        <p>Please create a blog post</p>
+    </div>
+</div>
 {{/if}}
+<div class="row">
+    <div class="col-12 text-center mt-3">
+        <a href="/post-new" class="create-post"> + New Post</a>
+    </div>
+</div>
