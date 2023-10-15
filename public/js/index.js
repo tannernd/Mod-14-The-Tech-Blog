@@ -14,7 +14,7 @@ const createPost = async (event) => {
     const postInfo = await postResponse.json();
     //If response is Ok, then redirect to the post page. 
     if (postResponse.ok) {        
-        document.location.replace('/post/'+postInfo.id);
+        document.location.replace('/dashboard');
         } else {
         alert('Failed save post.');
         }
@@ -36,7 +36,7 @@ const updatePost = async (event) => {
     const postInfo = await postResponse.json();
     //If response is Ok, then redirect to the post page. 
     if (postResponse.ok) {        
-        document.location.replace('/post/'+postInfo.id);
+        document.location.replace('/dashboard');
         } else {
         alert('Failed update post.');
         }
