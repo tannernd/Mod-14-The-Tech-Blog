@@ -13,7 +13,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-//Create a comment
+//Create a comment, id is the blog post id
 router.post('/:id', async (req, res) => {
     try {
         req.body.post_id = req.params.id;
