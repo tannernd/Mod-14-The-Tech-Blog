@@ -4,29 +4,28 @@ const withAuth = require('../utils/auth')
 
 // Homepage Route
 router.get('/', async (req, res, next) => {
-    const posts = await Posts.findAll({
-        include: [{ model: Comments }, { model: User }]})
-      let postsData = [];
-      if (posts === undefined || posts === null || posts.length === 0 ) {
-        postsData = [];
-      } else {
-        postsData = posts.map((post) => post.get({ plain: true }));;
-      } 
-    res.render('home', {postsData, loggedIn: req.session.logged_in});
+  const posts = await Posts.findAll({
+      include: [{ model: Comments }, { model: User }]})
+  let postsData = [];
+  if (posts === undefined || posts === null || posts.length === 0 ) {
+    postsData = [];
+  } else {
+    postsData = posts.map((post) => post.get({ plain: true }));;
+  } 
+  res.render('home', {postsData, loggedIn: req.session.logged_in});
 });
 
   //Member Dashboard route
 router.get('/dashboard', withAuth, async (req, res, next) => { 
-    const posts = await Posts.findAll({
-      include: [{ model: Comments }, { model: User }], where:{user_id:req.session.user_id}});
-      
-      let postData = [];
-      if (posts === undefined || posts.length === 0) {
-        postData = [];
-      } else {
-        postData = posts.map((post) => post.get({ plain: true }));
-      }      
-      res.render('dashboard', {postData, loggedIn: req.session.logged_in});
+  const posts = await Posts.findAll({
+    include: [{ model: Comments }, { model: User }], where:{user_id:req.session.user_id}});    
+  let postData = [];
+  if (posts === undefined || posts.length === 0) {
+    postData = [];
+  } else {
+    postData = posts.map((post) => post.get({ plain: true }));
+  }      
+  res.render('dashboard', {postData, loggedIn: req.session.logged_in});
 });
 
 //Login Route
@@ -51,31 +50,38 @@ router.get('/signup', (req, res) => {
 
 // Post Route
 router.get('/post/:id', withAuth, async (req, res, next) => {
-    const posts = await Posts.findByPk(req.params.id, {include: [{ model: Comments }, { model: User }]});
-      let postsData = [];
-      if (posts === undefined || posts === null || posts.length === 0 ) {
-        postsData = [];
-      } else {
-        postsData = posts.get({ plain: true });;
-      } 
-    res.render('post', {postsData, loggedIn: req.session.logged_in});
+  const posts = await Posts.findByPk(req.params.id, {include: [{ model: User }]});
+  let postsData = [];
+  if (posts === undefined || posts === null || posts.length === 0 ) {
+    postsData = [];
+  } else {
+    postsData = posts.get({ plain: true });;
+  } 
+  const comments = await Comments.findAll({include: [{ model: User }], where:{post_id:req.params.id}});
+  let commentsData = [];
+  if (comments === undefined || comments === null || comments.length === 0 ) {
+    commentsData = [];
+  } else {
+    commentsData = comments.map((comment) => comment.get({ plain: true }));
+  }
+  res.render('post', {postsData, commentsData, loggedIn: req.session.logged_in});
 });
 
 // Post Route
 router.get('/post-update/:id', withAuth, async (req, res, next) => {
   const posts = await Posts.findByPk(req.params.id, {include: [{ model: Comments }, { model: User }]});
-    let postsData = [];
-    if (posts === undefined || posts === null || posts.length === 0 ) {
-      postsData = [];
-    } else {
-      postsData = posts.get({ plain: true });;
-    } 
+  let postsData = [];
+  if (posts === undefined || posts === null || posts.length === 0 ) {
+    postsData = [];
+  } else {
+    postsData = posts.get({ plain: true });;
+  } 
   res.render('updatePost', {postsData, loggedIn: req.session.logged_in});
 });
 
 // New Post Route
 router.get('/post-new', withAuth, async (req, res, next) => {
-    res.render('newPost', {loggedIn: req.session.logged_in});
+  res.render('newPost', {loggedIn: req.session.logged_in});
 });
 
   module.exports = router;

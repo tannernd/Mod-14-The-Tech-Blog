@@ -5,13 +5,10 @@
 </div>
 {{#if postData}}
 {{#each postData as |post|}}
-<div class="card ms-3 me-3">
+<div class="card m-3">
     <div class="card-header">
-    <a href="/post-update/{{post.id}}">{{post.title}}</a>
+    <a href="/post-update/{{post.id}}"><h4>{{post.title}}</h4></a>
   </div>
-    <div class="card-body">
-        {{post.post}}
-    </div>
 </div>
 {{/each}}
 {{else}}

@@ -1,3 +1,9 @@
+
+<div class="header">
+    <div class="logo">
+    <h1>The Tech Blog</h1>
+    </div>
+</div>
 <div class="card ms-3 me-3">
     <div class="card-header d-flex">
     <a class="d-flex flex-grow-1" href="/post/{{postsData.id}}"><h4>{{postsData.title}}</h4></a>
@@ -5,5 +11,30 @@
   </div>
     <div class="card-body">
         {{postsData.post}}
+    </div>
+</div>
+{{#each commentsData as |comment|}}
+<div class="card ms-3 me-3">
+    <div class="card-header d-flex">
+    <h4></h4>
+  </div>
+    <div class="card-body">
+        <p>{{comment.comment}}</p>
+        <p>-{{comment.user.username}}, {{formatDate comment.updatedAt}}</p>
+    </div>
+</div>
+{{/each}}
+<div class="card ms-3 me-3">
+    <div class="card-header d-flex">
+    <h4></h4>
+  </div>
+    <div class="card-body">
+        <form id="create-comment">
+            <div class="form-group">
+                <label for="comment">Comment</label>
+                <textarea class="form-control" id="comment" placeholder="Enter a Comment"></textarea>
+            </div>
+            <button type="submit" class="btn mt-2">Submit</button>  
+        </form>
     </div>
 </div>
