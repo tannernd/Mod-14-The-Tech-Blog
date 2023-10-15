@@ -32,7 +32,7 @@ Comments.belongsTo(Posts, {
 
 // Posts has many Comments
 Posts.hasMany(Comments, {
-    foreignKey: 'user_id',
+    foreignKey: 'post_id',
     onDelete: 'CASCADE'
 });
 
