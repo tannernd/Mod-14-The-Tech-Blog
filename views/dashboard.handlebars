@@ -1,0 +1,19 @@
+<div class="header">
+    <div class="logo">
+    <h1>Your Dashboard</h1>
+    </div>
+</div>
+{{#if postData}}
+{{#each postData as |post|}}
+<div class="card ms-3 me-3">
+    <div class="card-header">
+    <a href="/post/{{post.id}}">{{post.title}}</a>
+  </div>
+    <div class="card-body">
+        {{post.post}}
+    </div>
+</div>
+{{/each}}
+{{else}}
+<p>Please create a blog post</p>
+{{/if}}

@@ -1,0 +1,8 @@
+<div class="card ms-3 me-3">
+    <div class="card-header d-flex">
+    <a class="d-flex flex-grow-1" href="/post/{{postsData.id}}"><h4>{{postsData.title}}</h4></a><span class="d-flex justify-content-end">Posted by {{postsData.user.username}} on {{formatDate postsData.updatedAt}}</span>
+  </div>
+    <div class="card-body">
+        {{postsData.post}}
+    </div>
+</div>

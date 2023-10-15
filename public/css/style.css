@@ -1,0 +1,84 @@
+:root {
+  --dark-background: #231010;
+  --light-background: #D9EAD3;
+  --text:#D9EAD3;
+  --text-dark:#231010;
+  --button-background:#666666;
+  --button-text:#CFCDDA;  
+}
+
+body {
+  background-color: var(--light-background);
+}
+.sign-in-card{
+    max-width: 300px;
+}
+.s-card{
+padding: 20px;
+}
+
+.card {
+  margin: 10px 0;
+  border: var(--dark-background) 3px solid;
+  border-radius: 0px;
+}
+
+.card-header {
+  background-color:var(--dark-background); 
+  border-radius: 0px !important;
+  color: var(--text);; 
+}
+
+.card-header a {
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+}
+
+.card-body {
+  background-color:var(--light-background);  
+  color: var(--text-dark);
+}
+
+button, .btn, button:hover, .btn:hover, button:focus, .btn:focus, button:active, .btn:active  {
+  background-color: var(--button-background) !important;
+  color:var(--button-text) !important;
+  border:none !important;
+}
+
+/* Nav */
+header, .header {
+  background-color:var(--dark-background) ;  
+  color: var(--text);
+  padding: 1rem;
+}
+
+.logo {
+  background-color:var(--light-background) ;  
+  color: var(--text-dark);
+  width: 400px;
+  padding:1rem;
+  border-radius: 15px;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 10px 10px #888888;
+}
+
+nav {
+  padding: 1rem;
+}
+
+nav .nav-link {
+  display: inline;
+  text-decoration: none;
+  border: none;
+  fill: none;
+  padding: 0 0.5rem;
+  color: var(--text);
+}
+
+nav .nav-link:hover {
+  text-decoration: underline;
+}

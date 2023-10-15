@@ -26,7 +26,7 @@ router.get('/dashboard', withAuth, async (req, res, next) => {
       } else {
         postData = posts.map((post) => post.get({ plain: true }));
       }      
-      res.render('dashboard', {propertyData, loggedIn: req.session.logged_in});
+      res.render('dashboard', {postData, loggedIn: req.session.logged_in});
 });
 
 //Login Route
@@ -50,8 +50,8 @@ router.get('/signup', (req, res) => {
 });
 
 // Post Route
-router.get('/post/:id', async (req, res, next) => {
-    const posts = await Posts.findByPk(req.params.id);
+router.get('/post/:id', withAuth, async (req, res, next) => {
+    const posts = await Posts.findByPk(req.params.id, {include: [{ model: Comments }, { model: User }]});
       let postsData = [];
       if (posts === undefined || posts === null || posts.length === 0 ) {
         postsData = [];
@@ -62,7 +62,7 @@ router.get('/post/:id', async (req, res, next) => {
 });
 
 // New Post Route
-router.get('/post/new', async (req, res, next) => {
+router.get('/post/new', withAuth, async (req, res, next) => {
     res.render('newPost', {loggedIn: req.session.logged_in});
 });
 
