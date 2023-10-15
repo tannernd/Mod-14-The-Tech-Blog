@@ -49,7 +49,7 @@ router.get('/signup', (req, res) => {
 });
 
 // Post Route
-router.get('/post/:id', withAuth, async (req, res, next) => {
+router.get('/post/:id', async (req, res, next) => {
   const posts = await Posts.findByPk(req.params.id, {include: [{ model: User }]});
   let postsData = [];
   if (posts === undefined || posts === null || posts.length === 0 ) {
